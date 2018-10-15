@@ -26,9 +26,11 @@
 * Robert Siwicki (Senior Solutions Architect) - rsiwicki@cloudera.com
 * Rafael Arana (Principal Solutions Archiect) - rafael.arana@cloudera.com
 * Please introduce yourselves:
-    * Name
-    * Region & Role
-    * Your experience with Hadoop to date
+    * Vasily Melnik
+    * Russian Federation
+    * Cloudera Certified Administrator for Apache Hadoop (2017)
+	  CCA Spark and Hadoop Developer  
+	  Spark developer since 2017  	
 
 ---
 <div style="page-break-after: always;"></div>
@@ -46,7 +48,7 @@ sufficient to:
 ---
 <div style="page-break-after: always;"></div>
 
-## <center> <a name="course_objectives"/a> Course Objectives
+## <center> <a name="course_objectives"/> Course Objectives
 
 * Prepare you to install CM/CDH clusters for production
 * Evaluate your readiness for engagements
@@ -55,7 +57,7 @@ sufficient to:
 ---
 <div style="page-break-after: always;"></div>
 
-## <center> <a name="design_layout"/a>Course Plan
+## <center> <a name="design_layout"/>Course Plan
 
 * Seven general topics with specific, up-to-date content
     * <a href="../installation/install.md">Installation</a>
