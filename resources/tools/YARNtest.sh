@@ -8,36 +8,45 @@ HADOOP=/opt/cloudera/parcels/CDH/bin
 echo Testing loop started on `date`
 
 # Mapper containers
-for i in 8    
+for i in 4 8
 do
    # Reducer containers
-   for j in 1 
+   for j in 1 2 
    do                 
       # Container memory
       for k in 512 1024 
-      do                         
+      do          
+         echo Mapper count $i
+		 echo Reducer count $j
+         echo Container memory $k
          # Set mapper JVM heap 
          MAP_MB=`echo "($k*0.8)/1" | bc` 
-
+         echo Mapper memory $MAP_MB	
          # Set reducer JVM heap 
          RED_MB=`echo "($k*0.8)/1" | bc` 
-
-        time ${HADOOP}/hadoop jar ${MR}/hadoop-examples.jar teragen \
+         echo Reducer memory $RED_MB
+        
+		
+        time hadoop jar ${MR}/hadoop-examples.jar teragen \
                      -Dmapreduce.job.maps=$i \
+                     -Ddfs.replication=1 \
                      -Dmapreduce.map.memory.mb=$k \
                      -Dmapreduce.map.java.opts.max.heap=$MAP_MB \
-                     51200000 /results/tg-10GB-${i}-${j}-${k} 1>tera_${i}_${j}_${k}.out 2>tera_${i}_${j}_${k}.err                       
-
-       time ${HADOOP}/hadoop jar $MR/hadoop-examples.jar terasort \
+                     -Dmapreduce.reduce.memory.mb=$k \
+                     -Dmapreduce.reduce.java.opts.max.heap=$RED_MB \
+                     100000000 /results/tg-10GB-${i}-${j}-${k} 1>teragen_${i}_${j}_${k}.out 2>teragen_${i}_${j}_${k}.err                       
+        echo teragen time
+       time hadoop jar $MR/hadoop-examples.jar terasort \
                      -Dmapreduce.job.maps=$i \
+                     -Ddfs.replication=1 \
                      -Dmapreduce.job.reduces=$j \
                      -Dmapreduce.map.memory.mb=$k \
                      -Dmapreduce.map.java.opts.max.heap=$MAP_MB \
                      -Dmapreduce.reduce.memory.mb=$k \
                      -Dmapreduce.reduce.java.opts.max.heap=$RED_MB \
-	             /results/tg-10GB-${i}-${j}-${k}  \
-                     /results/ts-10GB-${i}-${j}-${k} 1>>tera_${i}_${j}_${k}.out 2>>tera_${i}_${j}_${k}.err                         
-
+                  /results/tg-10GB-${i}-${j}-${k}  \
+                     /results/ts-10GB-${i}-${j}-${k} 1>terasort_${i}_${j}_${k}.out 2>terasort_${i}_${j}_${k}.err                         
+        echo terasort time  
         $HADOOP/hadoop fs -rm -r -skipTrash /results/tg-10GB-${i}-${j}-${k}                         
         $HADOOP/hadoop fs -rm -r -skipTrash /results/ts-10GB-${i}-${j}-${k}                 
       done

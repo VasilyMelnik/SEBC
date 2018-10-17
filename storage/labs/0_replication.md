@@ -53,4 +53,4 @@
 [root@instance-6 ~]# hadoop fs -du -s -h /user/VasilyMelnik/tmp3
 476.8 M  476.8 M  /user/VasilyMelnik/tmp3
 
-hadoop distcp /user/VasilyMelnik/tmp3 hdfs://35.228.150.213:8020/user/VasilyMelnik/target6
+hadoop distcp -skipcrccheck -update /user/VasilyMelnik/tmp3 hdfs://35.228.150.213:8020/user/VasilyMelnik/target6
