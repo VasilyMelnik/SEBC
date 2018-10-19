@@ -3,7 +3,6 @@ Google Compute Engine
 # OS version
 Red Hat Enterprise Linux Server release 7.5 (Maipo)
 # disk space
-...
 	[root@instance-13 ~]# df -h
 	Filesystem      Size  Used Avail Use% Mounted on
 	/dev/sda1        80G  2.8G   78G   4% /
@@ -49,9 +48,9 @@ Red Hat Enterprise Linux Server release 7.5 (Maipo)
 	tmpfs           7.3G     0  7.3G   0% /sys/fs/cgroup
 	tmpfs           1.5G     0  1.5G   0% /run/user/0
 
-...
+
 # yum result
-...
+
 	[root@instance-13 ~]# yum repolist enabled
 	repo id                                                   repo name                                                               status
 	cloudera-manager                                          Cloudera Manager                                                             7
@@ -67,7 +66,7 @@ Red Hat Enterprise Linux Server release 7.5 (Maipo)
 	rhui-rhel-rs-for-rhel-7-server-rhui-rpms/7Server/x86_64   Red Hat Enterprise Linux Resilient Storage (for RHEL 7 Server) (RPMs) f    593
 	rhui-rhel-server-rhui-rhscl-7-rpms/7Server/x86_64         Red Hat Software Collections RPMs for Red Hat Enterprise Linux 7 Server 10,509
 	repolist: 62,644
-...
+
 
 # user add
 
